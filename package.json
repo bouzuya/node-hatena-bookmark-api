@@ -6,6 +6,12 @@
   "bugs": {
     "url": "https://github.com/bouzuya/node-hatena-bookmark-api/issues"
   },
+  "devDependencies": {
+    "espower-loader": "^0.10.0",
+    "intelli-espower-loader": "^0.6.0",
+    "mocha": "^2.1.0",
+    "power-assert": "^0.10.2"
+  },
   "homepage": "https://github.com/bouzuya/node-hatena-bookmark-api",
   "keywords": [
     "hatena",
