@@ -6,6 +6,9 @@
   "bugs": {
     "url": "https://github.com/bouzuya/node-hatena-bookmark-api/issues"
   },
+  "dependencies": {
+    "wsse": "0.0.3"
+  },
   "devDependencies": {
     "espower-loader": "^0.10.0",
     "intelli-espower-loader": "^0.6.0",
