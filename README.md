@@ -2,6 +2,23 @@
 
 [Hatena::Bookmark API][hatena-bookmark-api] wrapper for Node.js (unofficial)
 
+## Usage
+
+```
+var bookmark = require('hatena-bookmark-api');
+
+var client = bookmark({ type: 'wsse', username: 'username', apikey: 'apikey' });
+var options = {};
+
+client.index(options, function(err, bookmarks) {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(bookmarks);
+  }
+});
+```
+
 ## License
 
 [MIT](LICENSE)
