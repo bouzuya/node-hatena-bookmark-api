@@ -10,7 +10,8 @@
     "espower-loader": "^0.10.0",
     "intelli-espower-loader": "^0.6.0",
     "mocha": "^2.1.0",
-    "power-assert": "^0.10.2"
+    "power-assert": "^0.10.2",
+    "sinon": "^1.12.2"
   },
   "homepage": "https://github.com/bouzuya/node-hatena-bookmark-api",
   "keywords": [
