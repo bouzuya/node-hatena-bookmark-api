@@ -1,0 +1,24 @@
+{
+  "name": "hatena-bookmark-api",
+  "description": "Hatena::Bookmark API wrapper for Node.js (unofficial)",
+  "version": "0.0.0",
+  "author": "bouzuya",
+  "bugs": {
+    "url": "https://github.com/bouzuya/node-hatena-bookmark-api/issues"
+  },
+  "homepage": "https://github.com/bouzuya/node-hatena-bookmark-api",
+  "keywords": [
+    "hatena",
+    "bookmark",
+    "api"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bouzuya/node-hatena-bookmark-api.git"
+  },
+  "scripts": {
+    "test": "exit 0"
+  }
+}
