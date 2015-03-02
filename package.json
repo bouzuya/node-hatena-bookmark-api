@@ -25,6 +25,7 @@
     "url": "https://github.com/bouzuya/node-hatena-bookmark-api.git"
   },
   "scripts": {
-    "test": "mocha --require intelli-espower-loader"
+    "test": "mocha --require intelli-espower-loader",
+    "watch": "mocha --require intelli-espower-loader --watch"
   }
 }
