@@ -2,6 +2,10 @@
 
 [Hatena::Bookmark API][hatena-bookmark-api] wrapper for Node.js (unofficial)
 
+## License
+
+[MIT](LICENSE)
+
 ## Author
 
 [bouzuya][user] &lt;[m@bouzuya.net][mail]&gt; ([http://bouzuya.net][url])
