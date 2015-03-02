@@ -30,4 +30,20 @@ describe('Bookmark', function() {
       assert(headers['X-WSSE'].match(/Created=".*"/));
     });
   });
+
+  describe('#_parseXml', function() {
+    beforeEach(function() { this.bookmark = new bookmark.Bookmark(); });
+
+    it('should return Promise', function() {
+      var xml = '<?xml version="UTF-8"?><feed></feed>';
+      var result = this.bookmark._parseXml(xml);
+      assert(result.then);
+    });
+
+    it('should parse XML', function() {
+      var xml = '<?xml version="UTF-8"?><feed></feed>';
+      return this.bookmark._parseXml(xml)
+      .then(function(xml) { assert.deepEqual(xml, { feed: '' }); });
+    });
+  });
 });
