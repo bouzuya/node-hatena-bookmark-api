@@ -17,6 +17,8 @@ describe('Bookmark', function() {
     });
   });
 
+  describe.skip('#index', function() {});
+
   describe('#_getAuthorizationHeaders', function() {
     it('should return request headers for WSSE', function() {
       var options = { type: 'wsse', username: 'u', apikey: 'a' };
