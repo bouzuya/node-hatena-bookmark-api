@@ -8,7 +8,7 @@ gulp.task('test', function() {
   };
   var espower = require('gulp-espower');
   var mocha = require('gulp-mocha');
-  return gulp.src('test/**/*.js')
+  return gulp.src(['test/**/*.js', '!test/helper.js'])
   .pipe(espower().on('error', onError))
   .pipe(mocha().on('error', onError));
 });

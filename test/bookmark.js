@@ -1,4 +1,4 @@
-var assert = require('power-assert');
+require('./helper');
 
 var bookmark = require('../lib/bookmark');
 
