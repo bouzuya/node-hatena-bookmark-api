@@ -13,8 +13,10 @@
     "xml2js": "^0.4.5"
   },
   "devDependencies": {
-    "espower-loader": "^0.10.0",
-    "intelli-espower-loader": "^0.6.0",
+    "gulp": "^3.8.11",
+    "gulp-espower": "^0.10.0",
+    "gulp-mocha": "^2.0.0",
+    "gulp-util": "^3.0.4",
     "mocha": "^2.1.0",
     "nock": "^0.59.1",
     "power-assert": "^0.10.2",
@@ -33,7 +35,7 @@
     "url": "https://github.com/bouzuya/node-hatena-bookmark-api.git"
   },
   "scripts": {
-    "test": "mocha --require intelli-espower-loader",
-    "watch": "mocha --require intelli-espower-loader --watch"
+    "test": "gulp test",
+    "watch": "gulp watch"
   }
 }
