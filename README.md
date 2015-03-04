@@ -9,9 +9,13 @@
 ```
 var bookmark = require('hatena-bookmark-api');
 
-var client = bookmark({ type: 'wsse', username: 'username', apikey: 'apikey' });
-var options = {};
+var client = bookmark({
+  type: 'wsse', // oauth or wsse
+  username: 'username',
+  apikey: 'apikey'
+});
 
+var options = {};
 client.index(options, function(err, bookmarks) {
   if (err) {
     console.error(err);
@@ -26,9 +30,15 @@ client.index(options, function(err, bookmarks) {
 ```
 var bookmark = require('hatena-bookmark-api');
 
-var client = bookmark({ type: 'wsse', username: 'username', apikey: 'apikey' });
-var options = { of: 20 };
+var client = bookmark({
+  type: 'oauth', // oauth or wsse
+  consumerKey: 'consumerKey',
+  consumerSecret: 'consumerSecret',
+  token: 'token',
+  tokenSecret: 'tokenSecret'
+});
 
+var options = { of: 20 };
 client.index(options)
 .then(function(bookmarks) {
   console.log(bookmarks);
