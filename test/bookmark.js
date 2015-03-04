@@ -15,6 +15,21 @@ describe('Bookmark', function() {
       assert(obj._username === 'u');
       assert(obj._apikey === 'a');
     });
+
+    it('should set oauth options to private vars', function() {
+      var options = {
+        type: 'oauth',
+        consumerKey: 'consumerKey',
+        consumerSecret: 'consumerSecret',
+        token: 'token',
+        tokenSecret: 'tokenSecret'
+      };
+      var obj = new bookmark.Bookmark(options);
+      assert(obj._consumerKey === 'consumerKey');
+      assert(obj._consumerSecret === 'consumerSecret');
+      assert(obj._token === 'token');
+      assert(obj._tokenSecret === 'tokenSecret');
+    });
   });
 
   describe('#index', function() {
