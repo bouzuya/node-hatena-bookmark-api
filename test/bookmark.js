@@ -29,6 +29,7 @@ describe('Bookmark', function() {
         var req = {};
         req.url = options.url;
         req.headers = options.headers;
+        req.qs = options.qs;
         this.requests.push(req);
         options.callback(null, { body: this.xml });
       }.bind(this));
@@ -60,15 +61,31 @@ describe('Bookmark', function() {
     });
 
     context('Promise style', function() {
-      it('works', function() {
-        return this.bookmark.index({})
-        .then(function(bookmarks) {
-          assert(this.requests.length === 1);
-          var req = this.requests[0];
-          assert(req.url === 'http://b.hatena.ne.jp/atom/feed');
-          assert(req.headers.Authorization === 'WSSE profile="UsernameToken"');
-          assert.deepEqual(bookmarks, JSON.parse(this.json));
-        }.bind(this));
+      context('without of', function() {
+        it('works', function() {
+          return this.bookmark.index({})
+          .then(function(bookmarks) {
+            assert(this.requests.length === 1);
+            var req = this.requests[0];
+            assert(req.url === 'http://b.hatena.ne.jp/atom/feed');
+            assert(req.headers.Authorization === 'WSSE profile="UsernameToken"');
+            assert.deepEqual(bookmarks, JSON.parse(this.json));
+          }.bind(this));
+        });
+      });
+
+      context('with of=20', function() {
+        it('works', function() {
+          return this.bookmark.index({ of: 20 })
+          .then(function(bookmarks) {
+            assert(this.requests.length === 1);
+            var req = this.requests[0];
+            assert(req.url === 'http://b.hatena.ne.jp/atom/feed');
+            assert(req.headers.Authorization === 'WSSE profile="UsernameToken"');
+            assert.deepEqual(req.qs, { of: 20 });
+            assert.deepEqual(bookmarks, JSON.parse(this.json));
+          }.bind(this));
+        });
       });
     });
   });
