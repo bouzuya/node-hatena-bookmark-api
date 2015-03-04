@@ -4,6 +4,8 @@
 
 ## Usage
 
+### Callback
+
 ```
 var bookmark = require('hatena-bookmark-api');
 
@@ -16,6 +18,20 @@ client.index(options, function(err, bookmarks) {
   } else {
     console.log(bookmarks);
   }
+});
+```
+
+### Promise
+
+```
+var bookmark = require('hatena-bookmark-api');
+
+var client = bookmark({ type: 'wsse', username: 'username', apikey: 'apikey' });
+var options = { of: 20 };
+
+client.index(options)
+.then(function(bookmarks) {
+  console.log(bookmarks);
 });
 ```
 
