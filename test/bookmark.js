@@ -134,25 +134,4 @@ describe('Bookmark', function() {
       });
     });
   });
-
-  // TODO
-  describe('#_parseXml', function() {
-    beforeEach(function() { this.bookmark = new bookmark.Bookmark(); });
-
-    it('should return Promise', function() {
-      var xml = require('fs').readFileSync('./test/fixtures/feed-simple.xml');
-      var result = this.bookmark._parseXml(xml);
-      assert(result.then);
-    });
-
-    it('should parse XML', function() {
-      var fs = require('fs');
-      var xml = fs.readFileSync('./test/fixtures/feed-simple.xml');
-      var json = fs.readFileSync('./test/expectations/feed-simple.json');
-      return this.bookmark._parseXml(xml)
-      .then(function(xml) {
-        assert.deepEqual(xml, JSON.parse(json));
-      });
-    });
-  });
 });
