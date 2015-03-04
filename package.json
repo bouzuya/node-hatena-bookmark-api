@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "es6-promise": "^2.0.1",
+    "gulp-espower": "^0.10.1",
     "request": "^2.53.0",
     "wsse": "0.0.3",
     "xml2js": "^0.4.5"
