@@ -61,7 +61,7 @@ describe('Bookmark', function() {
     });
 
     context('Promise style', function() {
-      context('without of', function() {
+      context('without params', function() {
         it('works', function() {
           return this.bookmark.index({})
           .then(function(bookmarks) {
@@ -83,6 +83,34 @@ describe('Bookmark', function() {
             assert(req.url === 'http://b.hatena.ne.jp/atom/feed');
             assert(req.headers.Authorization === 'WSSE profile="UsernameToken"');
             assert.deepEqual(req.qs, { of: 20 });
+            assert.deepEqual(bookmarks, JSON.parse(this.json));
+          }.bind(this));
+        });
+      });
+
+      context('with date=20150101', function() {
+        it('works', function() {
+          return this.bookmark.index({ date: '20150101' })
+          .then(function(bookmarks) {
+            assert(this.requests.length === 1);
+            var req = this.requests[0];
+            assert(req.url === 'http://b.hatena.ne.jp/atom/feed');
+            assert(req.headers.Authorization === 'WSSE profile="UsernameToken"');
+            assert.deepEqual(req.qs, { date: '20150101' });
+            assert.deepEqual(bookmarks, JSON.parse(this.json));
+          }.bind(this));
+        });
+      });
+
+      context('with tag=atode', function() {
+        it('works', function() {
+          return this.bookmark.index({ tag: 'atode' })
+          .then(function(bookmarks) {
+            assert(this.requests.length === 1);
+            var req = this.requests[0];
+            assert(req.url === 'http://b.hatena.ne.jp/atom/feed');
+            assert(req.headers.Authorization === 'WSSE profile="UsernameToken"');
+            assert.deepEqual(req.qs, { tag: 'atode' });
             assert.deepEqual(bookmarks, JSON.parse(this.json));
           }.bind(this));
         });
