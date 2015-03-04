@@ -17,7 +17,61 @@ describe('Bookmark', function() {
     });
   });
 
-  describe.skip('#index', function() {});
+  describe('#index', function() {
+    beforeEach(function() {
+      var fs = require('fs');
+      var request = require('request');
+
+      this.requests = [];
+      this.xml = fs.readFileSync('./test/fixtures/feed-simple.xml');
+      this.json = fs.readFileSync('./test/expectations/feed-simple.json');
+      this.stub = this.sinon.stub(request, 'Request', function(options) {
+        var req = {};
+        req.url = options.url;
+        req.headers = options.headers;
+        this.requests.push(req);
+        options.callback(null, { body: this.xml });
+      }.bind(this));
+      this.bookmark = new bookmark.Bookmark({
+        type: 'wsse',
+        username: 'username',
+        apikey: 'apikey'
+      });
+    });
+
+    context('callback style', function() {
+      beforeEach(function(done) {
+        this.bookmarks = null;
+        this.bookmark.index({}, function(err, bookmarks) {
+          this.error = err;
+          this.bookmarks = bookmarks;
+          done();
+        }.bind(this));
+      });
+
+      it('works', function() {
+        assert(this.error === null);
+        assert(this.requests.length === 1);
+        var req = this.requests[0];
+        assert(req.url === 'http://b.hatena.ne.jp/atom/feed');
+        assert(req.headers.Authorization === 'WSSE profile="UsernameToken"');
+        assert.deepEqual(this.bookmarks, JSON.parse(this.json));
+      });
+    });
+
+    context('Promise style', function() {
+      it('works', function() {
+        return this.bookmark.index({})
+        .then(function(bookmarks) {
+          assert(this.requests.length === 1);
+          var req = this.requests[0];
+          assert(req.url === 'http://b.hatena.ne.jp/atom/feed');
+          assert(req.headers.Authorization === 'WSSE profile="UsernameToken"');
+          assert.deepEqual(bookmarks, JSON.parse(this.json));
+        }.bind(this));
+      });
+    });
+  });
 
   describe('#_getAuthorizationHeaders', function() {
     it('should return request headers for WSSE', function() {
