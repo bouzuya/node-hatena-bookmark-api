@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://purl.org/atom/ns#" xml:lang="ja">
+  <title>bouzuya@hatebu</title>
+  <id>tag:hatena.ne.jp,2005:bookmark-bouzuya</id>
+  <link type="text/html" rel="alternate" href="http://b.hatena.ne.jp/bouzuya/"/>
+  <link rel="service.post" type="application/x.atom+xml" href="http://b.hatena.ne.jp/atom/post" title="bouzuya@hatebu"/>
+  <link rel="next" type="application/x.atom+xml" href="http://b.hatena.ne.jp/bouzuya/atomfeed?of=20"/>
+  <entry>
+    <title>「音楽は1日1時間まで」とWHOが警告する理由とその対処法とは？ - GIGAZINE</title>
+    <link type="text/html" rel="related" href="http://gigazine.net/news/20150303-music-an-hour-a-day/"/>
+    <link type="text/html" rel="alternate" href="http://b.hatena.ne.jp/bouzuya/20150303#bookmark-243400540"/>
+    <link type="application/x.atom+xml" rel="service.edit" title="「音楽は1日1時間まで」とWHOが警告する理由とその対処法とは？ - GIGAZINE" href="http://b.hatena.ne.jp/atom/edit/243400540"/>
+    <author>
+      <name>bouzuya</name>
+    </author>
+    <summary>難聴がどうのというのは聞いたことがあるけど、1日1時間ルールなんてのがあるのか。</summary>
+    <id>tag:hatena.ne.jp,2005:bookmark-bouzuya-243400540</id>
+    <issued>2015-03-03T19:58:36</issued>
+  </entry>
+</feed>

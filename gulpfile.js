@@ -16,6 +16,6 @@ gulp.task('test', function() {
 gulp.task('watch', function() {
   return gulp.watch([
     './lib/**/*.js',
-    './test/**/*.js'
+    './test/**/*'
   ], ['test']);
 });
