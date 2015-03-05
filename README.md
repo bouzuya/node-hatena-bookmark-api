@@ -2,6 +2,12 @@
 
 [Hatena::Bookmark API][hatena-bookmark-api] wrapper for Node.js (unofficial)
 
+## Installation
+
+```
+$ npm install hatena-bookmark-api
+```
+
 ## Usage
 
 ### Callback
