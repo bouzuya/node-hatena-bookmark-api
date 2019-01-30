@@ -3,6 +3,19 @@
   "description": "Hatena::Bookmark API wrapper for Node.js (unofficial)",
   "version": "0.2.0",
   "author": "bouzuya",
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "6"
+          }
+        }
+      ],
+      "power-assert"
+    ]
+  },
   "bugs": {
     "url": "https://github.com/bouzuya/node-hatena-bookmark-api/issues"
   },
