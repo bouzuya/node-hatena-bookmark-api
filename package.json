@@ -25,9 +25,9 @@
   },
   "homepage": "https://github.com/bouzuya/node-hatena-bookmark-api",
   "keywords": [
-    "hatena",
+    "api",
     "bookmark",
-    "api"
+    "hatena"
   ],
   "license": "MIT",
   "main": "index.js",
