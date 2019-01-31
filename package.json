@@ -59,7 +59,19 @@
     "url": "https://github.com/bouzuya/node-hatena-bookmark-api.git"
   },
   "scripts": {
-    "test": "gulp test",
-    "watch": "gulp watch"
+    "build": "npm-run-all -s build:lint build:es2015 build:es5 build:lib",
+    "build:es2015": "tsc",
+    "build:es5": "babel --out-dir .tmp/es5/ --source-maps inline .tmp/es2015/",
+    "build:lib": "babel --copy-files --no-comments --out-dir ./lib/ .tmp/es2015/src/",
+    "build:lint": "tslint --project tsconfig.json",
+    "clean": "rimraf .nyc_output .tmp coverage lib",
+    "coveralls": "nyc report --reporter text-lcov | coveralls",
+    "prepare": "npm-run-all -s 'clean' 'build'",
+    "start": "node examples/index.js",
+    "test": "nyc --reporter lcov node .tmp/es5/test/index.js && nyc report",
+    "watch": "npm-run-all -p 'watch:*'",
+    "watch:es2015": "npm run build:es2015 -- --watch",
+    "watch:es5": "npm run build:es5 -- --watch",
+    "watch:test": "watch 'npm run test' .tmp/es5/ --wait 2"
   }
 }
