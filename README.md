@@ -6,52 +6,30 @@
 
 ## Installation
 
-```
-$ npm install hatena-bookmark-api
+```bash
+npm install hatena-bookmark-api
 ```
 
 ## Usage
 
-### Callback
+```typescript
+import { Client } from 'hatena-bookmark-api';
 
-```
-var bookmark = require('hatena-bookmark-api');
-
-var client = bookmark({
-  type: 'wsse', // oauth or wsse
-  username: 'username',
-  apikey: 'apikey'
-});
-
-var options = {};
-client.index(options, function(err, bookmarks) {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log(bookmarks);
-  }
-});
-```
-
-### Promise
-
-```
-var bookmark = require('hatena-bookmark-api');
-
-var client = bookmark({
-  type: 'oauth', // oauth or wsse
+const client = new Client({
   consumerKey: 'consumerKey',
   consumerSecret: 'consumerSecret',
   token: 'token',
   tokenSecret: 'tokenSecret'
 });
 
-var options = { of: 20 };
-client.index(options)
-.then(function(bookmarks) {
-  console.log(bookmarks);
-});
+// GET /1/my/bookmark
+client.getBookmark({ url })
+  .then((bookmark) => {
+    console.log(bookmark);
+  })
 ```
+
+See: [`examples/`](examples).
 
 ## License
 
