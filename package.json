@@ -47,6 +47,9 @@
     "typescript": "^3.2.4",
     "watch": "^1.0.2"
   },
+  "files": [
+    "lib"
+  ],
   "homepage": "https://github.com/bouzuya/node-hatena-bookmark-api",
   "keywords": [
     "api",
@@ -54,7 +57,7 @@
     "hatena"
   ],
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/bouzuya/node-hatena-bookmark-api.git"
