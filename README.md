@@ -1,6 +1,8 @@
 # hatena-bookmark-api
 
-[Hatena::Bookmark API][hatena-bookmark-api] wrapper for Node.js (unofficial)
+[Hatena Bookmark REST API][hatena-bookmark-rest-api] wrapper for Node.js (unofficial)
+
+[hatena-bookmark-rest-api]: http://developer.hatena.ne.jp/ja/documents/bookmark/apis/rest
 
 ## Installation
 
@@ -59,7 +61,6 @@ client.index(options)
 
 [bouzuya][user] &lt;[m@bouzuya.net][mail]&gt; ([http://bouzuya.net][url])
 
-[hatena-bookmark-api]: http://developer.hatena.ne.jp/ja/documents/bookmark
 [user]: https://github.com/bouzuya
 [mail]: mailto:m@bouzuya.net
 [url]: http://bouzuya.net
