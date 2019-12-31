@@ -18,8 +18,8 @@ import { Client } from 'hatena-bookmark-api';
 const client = new Client({
   consumerKey: 'consumerKey',
   consumerSecret: 'consumerSecret',
-  token: 'token',
-  tokenSecret: 'tokenSecret'
+  accessToken: 'accessToken',
+  accessTokenSecret: 'accessTokenSecret'
 });
 
 // GET /1/my/bookmark
