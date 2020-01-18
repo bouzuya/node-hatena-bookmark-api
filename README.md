@@ -31,6 +31,16 @@ client.getBookmark({ url })
 
 See: [`examples/`](examples).
 
+## Badges
+
+[![npm version][npm-badge-url]][npm-url]
+[![Travis CI][travis-ci-badge-url]][travis-ci-url]
+
+[npm-badge-url]: https://img.shields.io/npm/v/hatena-bookmark-api
+[npm-url]: https://www.npmjs.com/package/hatena-bookmark-api
+[travis-ci-badge-url]: https://img.shields.io/travis/bouzuya/node-hatena-bookmark-api
+[travis-ci-url]: https://travis-ci.org/bouzuya/node-hatena-bookmark-api
+
 ## License
 
 [MIT](LICENSE)
