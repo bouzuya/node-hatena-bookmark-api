@@ -63,7 +63,7 @@
     "url": "https://github.com/bouzuya/node-hatena-bookmark-api.git"
   },
   "scripts": {
-    "build": "npm-run-all -s build:lint build:es2015 build:es5 build:lib",
+    "build": "npm-run-all -s build:format build:lint build:es2015 build:es5 build:lib",
     "build:es2015": "tsc",
     "build:es5": "babel --out-dir .tmp/es5/ --source-maps inline .tmp/es2015/",
     "build:format": "prettier --check '{src,test}/**/*.ts'",
