@@ -2,6 +2,7 @@ import originalRequest from 'request';
 import { promisify } from 'util';
 import { baseUrl, operations } from './operation';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type RequestOAuth = any;
 
 const request = <T extends object, U>(
@@ -12,6 +13,7 @@ const request = <T extends object, U>(
   const operation = operations.find(({ id }) => id === operationId);
   if (typeof operation === 'undefined')
     throw new Error(`unknown operation id: ${operationId}`);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const promisedRequest = promisify(originalRequest as any);
   // TODO: check parameters
   return promisedRequest({
@@ -121,9 +123,12 @@ class Client {
 
   private oauth(): RequestOAuth {
     return {
+      // eslint-disable-next-line @typescript-eslint/camelcase
       consumer_key: this.credentials.consumerKey,
+      // eslint-disable-next-line @typescript-eslint/camelcase
       consumer_secret: this.credentials.consumerSecret,
       token: this.credentials.accessToken,
+      // eslint-disable-next-line @typescript-eslint/camelcase
       token_secret: this.credentials.accessTokenSecret
     };
   }
