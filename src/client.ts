@@ -23,10 +23,9 @@ const request = <T extends object, U>(
     qs: params,
     qsStringifyOptions: { arrayFormat: 'repeat' },
     url: baseUrl + operation.path
-  })
-    .then((response: originalRequest.Response) => {
-      if (response.statusCode === 204)
-        return Promise.resolve();
+  }).then(
+    (response: originalRequest.Response) => {
+      if (response.statusCode === 204) return Promise.resolve();
       else if (200 <= response.statusCode && response.statusCode <= 299)
         return Promise.resolve(JSON.parse(response.body));
       else {
@@ -36,16 +35,22 @@ const request = <T extends object, U>(
         // }
         const { body, headers, statusCode } = response;
         try {
-          return Promise.reject({ body: JSON.parse(body), headers, statusCode });
+          return Promise.reject({
+            body: JSON.parse(body),
+            headers,
+            statusCode
+          });
         } catch (_) {
           // JSON.parse error ?
           return Promise.reject({ body, headers, statusCode });
         }
       }
-    }, (error: Error) => {
+    },
+    (error: Error) => {
       // connection error ?
       return Promise.reject({ body: error, headers: {}, statusCode: 0 });
-    });
+    }
+  );
 };
 
 interface Credentials {
@@ -78,37 +83,36 @@ class Client {
     this.credentials = credentials;
   }
 
-  public getBookmark({ url }: { url: string; }): Promise<BookmarkWithFavorites> {
+  public getBookmark({ url }: { url: string }): Promise<BookmarkWithFavorites> {
     return request('getBookmark', this.oauth(), { url });
   }
 
-  public postBookmark(
-    params: {
-      comment?: string;
-      post_evernote?: boolean;
-      post_facebook?: boolean;
-      post_mixi?: boolean;
-      post_twitter?: boolean;
-      private?: boolean;
-      send_mail?: boolean;
-      tags?: string[];
-      url: string;
-    }
-  ): Promise<Bookmark> {
+  public postBookmark(params: {
+    comment?: string;
+    post_evernote?: boolean;
+    post_facebook?: boolean;
+    post_mixi?: boolean;
+    post_twitter?: boolean;
+    private?: boolean;
+    send_mail?: boolean;
+    tags?: string[];
+    url: string;
+  }): Promise<Bookmark> {
     return request('postBookmark', this.oauth(), params);
   }
 
-  public deleteBookmark({ url }: { url: string; }): Promise<void> {
+  public deleteBookmark({ url }: { url: string }): Promise<void> {
     return request('deleteBookmark', this.oauth(), { url });
   }
 
-  public getEntry({ url }: { url: string; }): Promise<Entry> {
+  public getEntry({ url }: { url: string }): Promise<Entry> {
     return request('getEntry', this.oauth(), { url });
   }
 
   public getTags(_params: {}): Promise<Tag[]> {
-    return request<{}, { tags: Tag[]; }>('getTags', this.oauth(), {})
-      .then(({ tags }) => tags);
+    return request<{}, { tags: Tag[] }>('getTags', this.oauth(), {}).then(
+      ({ tags }) => tags
+    );
   }
 
   public getUser(_params: {}): Promise<User> {
@@ -154,11 +158,4 @@ interface User {
   private: boolean;
 }
 
-export {
-  Bookmark,
-  BookmarkWithFavorites,
-  Client,
-  Entry,
-  Tag,
-  User
-};
+export { Bookmark, BookmarkWithFavorites, Client, Entry, Tag, User };
