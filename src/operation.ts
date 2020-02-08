@@ -6,7 +6,7 @@ interface Endpoint {
   path: string;
 }
 
-const baseUrl = "http://api.b.hatena.ne.jp";
+const baseUrl = "https://bookmark.hatenaapis.com";
 
 const operations: Endpoint[] = [
   // Bookmark API
@@ -15,7 +15,7 @@ const operations: Endpoint[] = [
     id: "getBookmark",
     method: "GET",
     parameters: ["url"],
-    path: "/1/my/bookmark"
+    path: "/rest/1/my/bookmark"
   },
   {
     authorization: ["write_public", "write_private"],
@@ -32,14 +32,14 @@ const operations: Endpoint[] = [
       "tags",
       "url"
     ],
-    path: "/1/my/bookmark"
+    path: "/rest/1/my/bookmark"
   },
   {
     authorization: ["write_public", "write_private"],
     id: "deleteBookmark",
     method: "DELETE",
     parameters: ["url"],
-    path: "/1/my/bookmark"
+    path: "/rest/1/my/bookmark"
   },
   // Entry API
   {
@@ -47,7 +47,7 @@ const operations: Endpoint[] = [
     id: "getEntry",
     method: "GET",
     parameters: ["url"],
-    path: "/1/entry"
+    path: "/rest/1/entry"
   },
   // Tag API
   {
@@ -55,7 +55,7 @@ const operations: Endpoint[] = [
     id: "getTags",
     method: "GET",
     parameters: [],
-    path: "/1/my/tags"
+    path: "/rest/1/my/tags"
   },
   // User information API
   {
@@ -63,7 +63,7 @@ const operations: Endpoint[] = [
     id: "getUser",
     method: "GET",
     parameters: [],
-    path: "/1/my"
+    path: "/rest/1/my"
   }
 ];
 
