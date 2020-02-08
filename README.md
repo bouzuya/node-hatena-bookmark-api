@@ -22,7 +22,7 @@ const client = new Client({
   accessTokenSecret: 'accessTokenSecret'
 });
 
-// GET /1/my/bookmark
+// GET /rest/1/my/bookmark
 client.getBookmark({ url })
   .then((bookmark) => {
     console.log(bookmark);
