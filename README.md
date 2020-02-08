@@ -31,6 +31,21 @@ client.getBookmark({ url })
 
 See: [`examples/`](examples).
 
+## Get Access Token & Secret
+
+```
+$ # get consumer_key & secret from http://www.hatena.ne.jp/oauth/develop
+$ export CONSUMER_KEY=...
+$ export CONSUMER_SECRET=...
+$ node scripts/get-access-token.js
+https://www.hatena.ne.jp/oauth/authorize?oauth_token=...
+listening for callback: localhost:4567
+access_token:
+...
+access_token_secret:
+...
+```
+
 ## Badges
 
 [![npm version][npm-badge-url]][npm-url]
