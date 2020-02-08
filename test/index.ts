@@ -1,4 +1,4 @@
-import { Test, run } from 'beater';
+import { Test, run } from "beater";
 
 const tests = [] as Test[];
 

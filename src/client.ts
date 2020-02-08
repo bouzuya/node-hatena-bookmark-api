@@ -1,6 +1,6 @@
-import originalRequest from 'request';
-import { promisify } from 'util';
-import { baseUrl, operations } from './operation';
+import originalRequest from "request";
+import { promisify } from "util";
+import { baseUrl, operations } from "./operation";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type RequestOAuth = any;
@@ -11,19 +11,19 @@ const request = <T extends object, U>(
   params: T
 ): Promise<U> => {
   const operation = operations.find(({ id }) => id === operationId);
-  if (typeof operation === 'undefined')
+  if (typeof operation === "undefined")
     throw new Error(`unknown operation id: ${operationId}`);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const promisedRequest = promisify(originalRequest as any);
   // TODO: check parameters
   return promisedRequest({
     headers: {
-      'User-Agent': 'node-hatena-bookmark-api'
+      "User-Agent": "node-hatena-bookmark-api"
     },
     method: operation.method,
     oauth,
     qs: params,
-    qsStringifyOptions: { arrayFormat: 'repeat' },
+    qsStringifyOptions: { arrayFormat: "repeat" },
     url: baseUrl + operation.path
   }).then(
     (response: originalRequest.Response) => {
@@ -86,7 +86,7 @@ class Client {
   }
 
   public getBookmark({ url }: { url: string }): Promise<BookmarkWithFavorites> {
-    return request('getBookmark', this.oauth(), { url });
+    return request("getBookmark", this.oauth(), { url });
   }
 
   public postBookmark(params: {
@@ -100,25 +100,25 @@ class Client {
     tags?: string[];
     url: string;
   }): Promise<Bookmark> {
-    return request('postBookmark', this.oauth(), params);
+    return request("postBookmark", this.oauth(), params);
   }
 
   public deleteBookmark({ url }: { url: string }): Promise<void> {
-    return request('deleteBookmark', this.oauth(), { url });
+    return request("deleteBookmark", this.oauth(), { url });
   }
 
   public getEntry({ url }: { url: string }): Promise<Entry> {
-    return request('getEntry', this.oauth(), { url });
+    return request("getEntry", this.oauth(), { url });
   }
 
   public getTags(_params: {}): Promise<Tag[]> {
-    return request<{}, { tags: Tag[] }>('getTags', this.oauth(), {}).then(
+    return request<{}, { tags: Tag[] }>("getTags", this.oauth(), {}).then(
       ({ tags }) => tags
     );
   }
 
   public getUser(_params: {}): Promise<User> {
-    return request('getUser', this.oauth(), {});
+    return request("getUser", this.oauth(), {});
   }
 
   private oauth(): RequestOAuth {
