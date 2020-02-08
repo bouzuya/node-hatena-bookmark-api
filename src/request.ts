@@ -35,6 +35,7 @@ const request = <T extends object, U>(
     (response: originalRequest.Response) => {
       if (response.statusCode === 204) return Promise.resolve();
       else if (200 <= response.statusCode && response.statusCode <= 299)
+        // assert response.body is json text
         return Promise.resolve(JSON.parse(response.body));
       else {
         // if (response.statusCode === 403) {
