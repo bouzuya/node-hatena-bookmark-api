@@ -1,6 +1,7 @@
-import originalRequest from "request";
-import { promisify } from "util";
+import fetch, { Headers, Response } from "node-fetch";
+import { URL } from "url";
 import { Credentials } from "./credentials";
+import { oauthAuthorizationHeader } from "./oauth";
 import { baseUrl, operations } from "./operation";
 
 const request = <T extends object, U>(
@@ -11,53 +12,57 @@ const request = <T extends object, U>(
   const operation = operations.find(({ id }) => id === operationId);
   if (typeof operation === "undefined")
     throw new Error(`unknown operation id: ${operationId}`);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const promisedRequest = promisify(originalRequest as any);
   // TODO: check parameters
-  return promisedRequest({
-    headers: {
-      "User-Agent": "node-hatena-bookmark-api"
-    },
-    method: operation.method,
-    oauth: {
-      // eslint-disable-next-line @typescript-eslint/camelcase
-      consumer_key: oauth.consumerKey,
-      // eslint-disable-next-line @typescript-eslint/camelcase
-      consumer_secret: oauth.consumerSecret,
-      token: oauth.accessToken,
-      // eslint-disable-next-line @typescript-eslint/camelcase
-      token_secret: oauth.accessTokenSecret
-    },
-    qs: params,
-    qsStringifyOptions: { arrayFormat: "repeat" },
-    url: baseUrl + operation.path
-  }).then(
-    (response: originalRequest.Response) => {
-      if (response.statusCode === 204) return Promise.resolve();
-      else if (200 <= response.statusCode && response.statusCode <= 299)
-        // assert response.body is json text
-        return Promise.resolve(JSON.parse(response.body));
+  const headers = new Headers({
+    "User-Agent": "node-hatena-bookmark-api"
+  });
+  const method = operation.method;
+  const urlObject = new URL(operation.path, baseUrl);
+  Object.entries(params).forEach(([key, value]) => {
+    urlObject.searchParams.append(key, value);
+  });
+  headers.append(
+    "Authorization",
+    oauthAuthorizationHeader(urlObject.toString(), method, oauth)
+  );
+  return fetch(urlObject.toString(), { headers, method }).then(
+    (response: Response) => {
+      if (response.status === 204) return Promise.resolve();
+      else if (200 <= response.status && response.status <= 299)
+        return response.json();
       else {
         // if (response.statusCode === 403) {
         //   const scopes = operation.authorization.join(' or ');
         //   throw new Error(`OAuth Authorization (${scopes}) is required.`);
         // }
-        const { body, headers, statusCode } = response;
-        try {
-          return Promise.reject({
-            body: JSON.parse(body),
-            headers,
-            statusCode
-          });
-        } catch (_) {
-          // JSON.parse error ?
-          return Promise.reject({ body, headers, statusCode });
-        }
+        const { headers, status } = response;
+        return response.json().then(
+          body => {
+            return Promise.reject({
+              body, // type...
+              headers,
+              statusCode: status
+            });
+          },
+          _ => {
+            // no response body
+            // JSON.parse error ?
+            return Promise.reject({
+              body: null, // type...
+              headers,
+              statusCode: status
+            });
+          }
+        );
       }
     },
     (error: Error) => {
       // connection error ?
-      return Promise.reject({ body: error, headers: {}, statusCode: 0 });
+      return Promise.reject({
+        body: error, // type...
+        headers: {},
+        statusCode: 0
+      });
     }
   );
 };

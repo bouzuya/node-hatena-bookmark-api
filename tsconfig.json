@@ -20,10 +20,8 @@
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
-    "target": "es2015"
+    "target": "es2015",
+    "typeRoots": ["./src/@types", "./node_modules/@types"]
   },
-  "files": [
-    "./src/index.ts",
-    "./test/index.ts"
-  ]
+  "files": ["./src/index.ts", "./test/index.ts"]
 }

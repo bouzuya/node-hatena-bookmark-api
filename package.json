@@ -20,15 +20,16 @@
     "url": "https://github.com/bouzuya/node-hatena-bookmark-api/issues"
   },
   "dependencies": {
-    "request": "^2.53.0"
+    "node-fetch": "^2.6.0",
+    "oauth-sign": "^0.9.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.3",
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "@types/node": "^10.17.14",
+    "@types/node-fetch": "^2.5.4",
     "@types/power-assert": "^1.5.3",
-    "@types/request": "^2.48.4",
     "@types/sinon": "^7.5.1",
     "@typescript-eslint/eslint-plugin": "^2.17.0",
     "@typescript-eslint/parser": "^2.17.0",
@@ -43,6 +44,7 @@
     "nyc": "^15.0.0",
     "power-assert": "^1.6.1",
     "prettier": "^1.19.1",
+    "request": "^2.88.2",
     "rimraf": "^3.0.0",
     "sinon": "^8.1.1",
     "typescript": "^3.7.5",
