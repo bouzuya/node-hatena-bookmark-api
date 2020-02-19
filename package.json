@@ -46,7 +46,7 @@
     "prettier": "^1.19.1",
     "request": "^2.88.2",
     "rimraf": "^3.0.0",
-    "sinon": "^8.1.1",
+    "sinon": "^9.0.0",
     "typescript": "^3.7.5",
     "watch": "^1.0.2"
   },
