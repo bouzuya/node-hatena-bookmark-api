@@ -6,7 +6,7 @@ const credentials = {
   accessToken: "access-token",
   accessTokenSecret: "access-token-secret",
   consumerKey: "consumer-key",
-  consumerSecret: "consumer-secret"
+  consumerSecret: "consumer-secret",
 };
 
 const tests: Test[] = group("client/", [
@@ -27,9 +27,9 @@ const tests: Test[] = group("client/", [
             permalink: "http://example.com",
             private: true,
             tags: ["tag1", "tag2"],
-            user: "bouzuya"
-          }
-        ]
+            user: "bouzuya",
+          },
+        ],
       })
     );
     const client = new Client(credentials);
@@ -39,7 +39,7 @@ const tests: Test[] = group("client/", [
     assert.deepStrictEqual(request.getCall(0).args, [
       "getBookmark",
       credentials,
-      params
+      params,
     ]);
   }),
 
@@ -58,7 +58,7 @@ const tests: Test[] = group("client/", [
         permalink: "http://example.com",
         private: true,
         tags: ["tag1", "tag2"],
-        user: "bouzuya"
+        user: "bouzuya",
       })
     );
     const client = new Client(credentials);
@@ -76,14 +76,14 @@ const tests: Test[] = group("client/", [
       // eslint-disable-next-line @typescript-eslint/camelcase
       send_mail: false,
       tags: ["tag1", "tag2"],
-      url: "http://example.com"
+      url: "http://example.com",
     };
     await client.postBookmark(params);
     assert(request.callCount === 1);
     assert.deepStrictEqual(request.getCall(0).args, [
       "postBookmark",
       credentials,
-      params
+      params,
     ]);
   }),
 
@@ -92,14 +92,14 @@ const tests: Test[] = group("client/", [
     request.returns(Promise.resolve());
     const client = new Client(credentials);
     const params = {
-      url: "http://example.com"
+      url: "http://example.com",
     };
     await client.deleteBookmark(params);
     assert(request.callCount === 1);
     assert.deepStrictEqual(request.getCall(0).args, [
       "deleteBookmark",
       credentials,
-      params
+      params,
     ]);
   }),
 
@@ -124,19 +124,19 @@ const tests: Test[] = group("client/", [
         title: "title",
         // eslint-disable-next-line @typescript-eslint/camelcase
         title_last_editor: "bouzuya",
-        url: "http://example.com"
+        url: "http://example.com",
       })
     );
     const client = new Client(credentials);
     const params = {
-      url: "http://example.com"
+      url: "http://example.com",
     };
     await client.getEntry(params);
     assert(request.callCount === 1);
     assert.deepStrictEqual(request.getCall(0).args, [
       "getEntry",
       credentials,
-      params
+      params,
     ]);
   }),
 
@@ -146,8 +146,8 @@ const tests: Test[] = group("client/", [
       Promise.resolve([
         {
           count: 1,
-          tag: "tag1"
-        }
+          tag: "tag1",
+        },
       ])
     );
     const client = new Client(credentials);
@@ -157,7 +157,7 @@ const tests: Test[] = group("client/", [
     assert.deepStrictEqual(request.getCall(0).args, [
       "getTags",
       credentials,
-      params
+      params,
     ]);
   }),
 
@@ -175,7 +175,7 @@ const tests: Test[] = group("client/", [
         is_oauth_twitter: false,
         name: "bouzuya",
         plususer: false,
-        private: false
+        private: false,
       })
     );
     const client = new Client(credentials);
@@ -185,9 +185,9 @@ const tests: Test[] = group("client/", [
     assert.deepStrictEqual(request.getCall(0).args, [
       "getUser",
       credentials,
-      params
+      params,
     ]);
-  })
+  }),
 ]);
 
 export { tests };

@@ -7,10 +7,10 @@ const tests: Test[] = group("credentials/", [
       accessToken: "a",
       accessTokenSecret: "b",
       consumerKey: "c",
-      consumerSecret: "d"
+      consumerSecret: "d",
     };
     assert(typeof credentials === "object");
-  })
+  }),
 ]);
 
 export { tests };

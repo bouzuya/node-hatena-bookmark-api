@@ -6,7 +6,7 @@ const credentials = {
   accessToken: "a",
   accessTokenSecret: "b",
   consumerKey: "c",
-  consumerSecret: "d"
+  consumerSecret: "d",
 };
 
 const tests: Test[] = group("request/", [
@@ -25,8 +25,8 @@ const tests: Test[] = group("request/", [
           value.includes('oauth_consumer_key="c"') &&
           value.includes('oauth_signature_method="HMAC-SHA1"') &&
           value.includes('oauth_token="a"') &&
-          value.includes('oauth_version="1.0"')
-      }
+          value.includes('oauth_version="1.0"'),
+      },
     })
       .get("/rest/1/my/bookmark")
       .query({ url: "http://example.com" })
@@ -98,7 +98,7 @@ const tests: Test[] = group("request/", [
 
   test("unknown operation", async () => {
     assert.throws(() => request("unknown", credentials, {}));
-  })
+  }),
 ]);
 
 export { tests };

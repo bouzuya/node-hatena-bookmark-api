@@ -14,7 +14,7 @@ const request = <T extends object, U>(
     throw new Error(`unknown operation id: ${operationId}`);
   // TODO: check parameters
   const headers = new Headers({
-    "User-Agent": "node-hatena-bookmark-api"
+    "User-Agent": "node-hatena-bookmark-api",
   });
   const method = operation.method;
   const urlObject = new URL(operation.path, baseUrl);
@@ -37,20 +37,20 @@ const request = <T extends object, U>(
         // }
         const { headers, status } = response;
         return response.json().then(
-          body => {
+          (body) => {
             return Promise.reject({
               body, // type...
               headers,
-              statusCode: status
+              statusCode: status,
             });
           },
-          _ => {
+          (_) => {
             // no response body
             // JSON.parse error ?
             return Promise.reject({
               body: null, // type...
               headers,
-              statusCode: status
+              statusCode: status,
             });
           }
         );
@@ -61,7 +61,7 @@ const request = <T extends object, U>(
       return Promise.reject({
         body: error, // type...
         headers: {},
-        statusCode: 0
+        statusCode: 0,
       });
     }
   );

@@ -15,7 +15,7 @@ const operations: Endpoint[] = [
     id: "getBookmark",
     method: "GET",
     parameters: ["url"],
-    path: "/rest/1/my/bookmark"
+    path: "/rest/1/my/bookmark",
   },
   {
     authorization: ["write_public", "write_private"],
@@ -30,16 +30,16 @@ const operations: Endpoint[] = [
       "private",
       "send_mail",
       "tags",
-      "url"
+      "url",
     ],
-    path: "/rest/1/my/bookmark"
+    path: "/rest/1/my/bookmark",
   },
   {
     authorization: ["write_public", "write_private"],
     id: "deleteBookmark",
     method: "DELETE",
     parameters: ["url"],
-    path: "/rest/1/my/bookmark"
+    path: "/rest/1/my/bookmark",
   },
   // Entry API
   {
@@ -47,7 +47,7 @@ const operations: Endpoint[] = [
     id: "getEntry",
     method: "GET",
     parameters: ["url"],
-    path: "/rest/1/entry"
+    path: "/rest/1/entry",
   },
   // Tag API
   {
@@ -55,7 +55,7 @@ const operations: Endpoint[] = [
     id: "getTags",
     method: "GET",
     parameters: [],
-    path: "/rest/1/my/tags"
+    path: "/rest/1/my/tags",
   },
   // User information API
   {
@@ -63,8 +63,8 @@ const operations: Endpoint[] = [
     id: "getUser",
     method: "GET",
     parameters: [],
-    path: "/rest/1/my"
-  }
+    path: "/rest/1/my",
+  },
 ];
 
 export { Endpoint, baseUrl, operations };

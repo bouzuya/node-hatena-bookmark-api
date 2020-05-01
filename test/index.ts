@@ -8,7 +8,7 @@ const tests: Test[] = group("/", [
   ...clientTests,
   ...credentialsTests,
   ...operationTests,
-  ...requestTests
+  ...requestTests,
 ]);
 
 run(tests).catch(() => process.exit(1));

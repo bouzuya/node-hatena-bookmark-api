@@ -5,7 +5,7 @@ import nock from "nock";
 import sinon from "sinon";
 
 const group = (groupName: string, tests: Test[]): Test[] =>
-  tests.map(test => named(groupName + name(test), test));
+  tests.map((test) => named(groupName + name(test), test));
 
 const test = (
   name: string,

@@ -29,7 +29,7 @@ const oauthAuthorizationHeader = (
     ["oauth_signature_method", signatureMethod],
     ["oauth_timestamp", timestamp],
     ["oauth_token", oauthKeys.accessToken],
-    ["oauth_version", "1.0"]
+    ["oauth_version", "1.0"],
   ];
 
   const urlObject = new URL(urlString);
@@ -48,8 +48,8 @@ const oauthAuthorizationHeader = (
         objectFromEntries(urlObject.searchParams.entries()),
         oauthKeys.consumerSecret,
         oauthKeys.accessTokenSecret
-      )
-    ]
+      ),
+    ],
   ]
     .map(([name, value]) => `${name}="${oauth.rfc3986(value)}"`)
     .join(",");

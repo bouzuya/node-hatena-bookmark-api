@@ -13,7 +13,7 @@ const tests: Test[] = group("operation/", [
       baseUrl + endpoint?.path,
       "https://bookmark.hatenaapis.com/rest/1/my/bookmark"
     );
-  })
+  }),
 ]);
 
 export { tests };
