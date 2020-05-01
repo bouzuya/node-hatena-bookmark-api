@@ -1,3 +1,12 @@
+## [3.0.1](https://github.com/bouzuya/node-hatena-bookmark-api/compare/v3.0.0...v3.0.1) (2020-05-02)
+
+* build: update dependabot automerged_updates ([be37326](https://github.com/bouzuya/node-hatena-bookmark-api/commit/be37326))
+* build(deps-dev): update dev deps
+* build(deps-dev): npm audit fix # minimist ([f164d7d](https://github.com/bouzuya/node-hatena-bookmark-api/commit/f164d7d))
+* style: apply prettier@2
+
+
+
 # [3.0.0](https://github.com/bouzuya/node-hatena-bookmark-api/compare/v2.0.0...v3.0.0) (2020-02-10)
 
 ### BREAKING CHANGE
@@ -62,6 +71,5 @@
 
 
 # 0.1.0 (2015-03-04)
-
 
 
